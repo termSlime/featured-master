@@ -1,0 +1,9 @@
+{
+  "_fv": 39,
+  "_type": "function",
+  "definition": {
+    "code": "# featuredmaster:welcome by 0micro\n# Made with MCreator\n\n/tellraw @a {\"text\":\"Hello, All of players, Thanks you to installing the Mod!\"}",
+    "name": "welcome",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "mod_elements": [],
+  "variable_elements": [],
+  "sound_elements": [],
+  "language_map": {
+    "en_us": {}
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "featuredmaster",
+    "modName": "FeaturedMaster",
+    "version": "1.0.0",
+    "description": "This mod Adds Things",
+    "author": "user, 0micro, MCreator",
+    "websiteURL": "https://0micro.github.io",
+    "license": "Academic Free License v3.0",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [
+      "etf",
+      "geckolib",
+      "playeranimator",
+      "reauth"
+    ],
+    "currentGenerator": "forge-1.19.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "io.github.zmicro.featuredmaster",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202300108712
+}

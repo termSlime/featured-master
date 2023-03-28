@@ -1,0 +1,33 @@
+{
+  "_fv": 39,
+  "_type": "config",
+  "definition": {
+    "pools": [
+      {
+        "category": "Chat",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 0,
+            "block": {
+              "value": ""
+            },
+            "logicField": 1,
+            "numberField": 0.0,
+            "textDefault": "",
+            "comment": "on Value is true, the welcome message will appears on creating / joining world",
+            "vardisplay": "Enable welcome Message?",
+            "varname": "enable_wmsg",
+            "enablecomment": true,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          }
+        ]
+      }
+    ],
+    "file": "featuredmaster",
+    "configType": 0
+  }
+}
