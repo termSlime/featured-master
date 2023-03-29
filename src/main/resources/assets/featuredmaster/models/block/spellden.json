@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "featuredmaster:blocks/spellden_main",
+    "particle": "featuredmaster:blocks/spellden_main"
+  },
+  "render_type": "solid"
+}

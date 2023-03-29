@@ -1,2 +1,9 @@
 Manifest-Version: 1.0
+Specification-Title: FeaturedMaster Mod
+Specification-Vendor: termSlime
+Specification-Version: 1
+Implementation-Title: FeaturedMaster Mod
+Implementation-Vendor: termSlime
+Implementation-Version: 1.0
+Implementation-Timestamp: 2023-03-29T20:35:21+0900
 

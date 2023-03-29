@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "featuredmaster:items/chill_calm1_disc"
+  }
+}

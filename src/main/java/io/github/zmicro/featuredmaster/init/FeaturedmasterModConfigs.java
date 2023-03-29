@@ -6,7 +6,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import io.github.zmicro.featuredmaster.configuration.MainModServerConfiguration;
 import io.github.zmicro.featuredmaster.configuration.MainModConfiguration;
+import io.github.zmicro.featuredmaster.configuration.MainModClientConfiguration;
 import io.github.zmicro.featuredmaster.FeaturedmasterMod;
 
 @Mod.EventBusSubscriber(modid = FeaturedmasterMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -14,7 +16,9 @@ public class FeaturedmasterModConfigs {
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {
 		event.enqueueWork(() -> {
-			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MainModConfiguration.SPEC, "featuredmaster.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, MainModServerConfiguration.SPEC, "featuredmaster-server.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MainModConfiguration.SPEC, "featuredmaster-common.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, MainModClientConfiguration.SPEC, "featuredmaster-client.toml");
 		});
 	}
 }

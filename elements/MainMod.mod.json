@@ -4,7 +4,7 @@
   "definition": {
     "pools": [
       {
-        "category": "Chat",
+        "category": "chat",
         "entries": [
           {
             "item": {
@@ -23,11 +23,29 @@
             "enablecomment": true,
             "onlyComment": false,
             "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 0,
+            "block": {
+              "value": ""
+            },
+            "logicField": 1,
+            "numberField": 0.0,
+            "textDefault": "",
+            "comment": "this is test",
+            "vardisplay": "test",
+            "varname": "test",
+            "enablecomment": false,
+            "onlyComment": true,
+            "entityType": "CUSTOM:Cslime"
           }
         ]
       }
     ],
-    "file": "featuredmaster",
+    "file": "featuredmaster-common",
     "configType": 0
   }
 }

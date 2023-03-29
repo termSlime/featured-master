@@ -1,0 +1,11 @@
+{
+  "_fv": 39,
+  "_type": "tab",
+  "definition": {
+    "name": "General",
+    "icon": {
+      "value": "Items.ENDER_PEARL"
+    },
+    "showSearch": true
+  }
+}

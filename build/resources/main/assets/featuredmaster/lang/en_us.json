@@ -1,3 +1,20 @@
 {
-  "config.featuredmaster.main_mod": "featuredmaster"
+  "item.featuredmaster.cslime_spawn_egg": "Cslime Spawn Egg",
+  "biome.featuredmaster.farrier_land": "Farrier Land",
+  "subtitles.ply_walk1": "",
+  "entity.featuredmaster.cslime": "Cslime",
+  "config.featuredmaster.main_mod_server": "featuredmaster-server",
+  "itemGroup.tabgeneral": "General",
+  "entity.featuredmaster.slime": "Slime",
+  "advancements.spellden_1.descr": "You need to mine spellden",
+  "subtitles.chill_calm1": "",
+  "item.featuredmaster.cilldisc": "Cilldisc",
+  "config.featuredmaster.main_mod_client": "featuredmaster-client",
+  "subtitles.cavestatic_low": "",
+  "advancements.spellden_1.title": "Start of FTM",
+  "item.featuredmaster.spellden_ore": "Spellden Ore",
+  "config.featuredmaster.main_mod": "featuredmaster-common",
+  "item.featuredmaster.cilldisc.desc": "ml",
+  "item.featuredmaster.slime_spawn_egg": "Slime Spawn Egg",
+  "block.featuredmaster.spellden": "Spellden"
 }

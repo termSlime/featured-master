@@ -40,6 +40,14 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.AbstractMap;
 
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModTabs;
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModSounds;
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModItems;
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModFeatures;
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModEntities;
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModBlocks;
+import io.github.zmicro.featuredmaster.init.FeaturedmasterModBiomes;
+
 @Mod("featuredmaster")
 public class FeaturedmasterMod {
 	public static final Logger LOGGER = LogManager.getLogger(FeaturedmasterMod.class);
@@ -47,9 +55,16 @@ public class FeaturedmasterMod {
 
 	public FeaturedmasterMod() {
 		MinecraftForge.EVENT_BUS.register(this);
-
+		FeaturedmasterModTabs.load();
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		FeaturedmasterModSounds.REGISTRY.register(bus);
+		FeaturedmasterModBlocks.REGISTRY.register(bus);
+		FeaturedmasterModItems.REGISTRY.register(bus);
+		FeaturedmasterModEntities.REGISTRY.register(bus);
 
+		FeaturedmasterModFeatures.REGISTRY.register(bus);
+
+		FeaturedmasterModBiomes.REGISTRY.register(bus);
 		GeckoLib.initialize();
 	}
 

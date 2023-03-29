@@ -1,0 +1,19 @@
+{
+  "_fv": 39,
+  "_type": "musicdisc",
+  "definition": {
+    "name": "Cilldisc",
+    "texture": "chill_calm1_disc",
+    "description": "ml",
+    "creativeTab": {
+      "value": "CUSTOM:General"
+    },
+    "specialInfo": [],
+    "hasGlow": false,
+    "music": {
+      "value": "CUSTOM:chill_calm1"
+    },
+    "lengthInTicks": 100,
+    "analogOutput": 0
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "mod_elements": [
+    {
+      "name": "Welcome",
+      "type": "function",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "welcome",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/featuredmaster/functions/welcome.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "MainMod",
+      "type": "config",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "main_mod",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/zmicro/featuredmaster/configuration/MainModConfiguration.java"
+        ]
+      }
+    },
+    {
+      "name": "FarrierLand",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "farrier_land",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/zmicro/featuredmaster/world/biome/FarrierLandBiome.java"
+        ]
+      }
+    },
+    {
+      "name": "General",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "general",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Cilldisc",
+      "type": "musicdisc",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cilldisc",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/featuredmaster/models/item/cilldisc.json",
+          "src/main/java/io/github/zmicro/featuredmaster/item/CilldiscItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Slime",
+      "type": "livingentity",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "slime",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/featuredmaster/models/item/slime_spawn_egg.json",
+          "src/main/resources/data/featuredmaster/forge/biome_modifier/slime_biome_modifier.json",
+          "src/main/java/io/github/zmicro/featuredmaster/client/renderer/SlimeRenderer.java",
+          "src/main/java/io/github/zmicro/featuredmaster/entity/SlimeEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "Cslime",
+      "type": "animatedentity",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cslime",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/zmicro/featuredmaster/entity/CslimeEntity.java",
+          "src/main/java/io/github/zmicro/featuredmaster/client/renderer/CslimeRenderer.java",
+          "src/main/resources/data/featuredmaster/forge/biome_modifier/cslime_biome_modifier.json",
+          "src/main/java/io/github/zmicro/featuredmaster/entity/model/CslimeModel.java",
+          "src/main/resources/assets/featuredmaster/models/item/cslime_spawn_egg.json"
+        ]
+      }
+    },
+    {
+      "name": "FtmMob",
+      "type": "tag",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ftm_mob",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/forge/tags/entity_types/ftm_mob.json"
+        ]
+      }
+    },
+    {
+      "name": "Spellden",
+      "type": "block",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spellden",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/zmicro/featuredmaster/block/SpelldenBlock.java",
+          "src/main/java/io/github/zmicro/featuredmaster/world/features/ores/SpelldenFeature.java",
+          "src/main/resources/assets/featuredmaster/models/block/spellden.json",
+          "src/main/resources/assets/featuredmaster/models/item/spellden.json",
+          "src/main/resources/assets/featuredmaster/blockstates/spellden.json",
+          "src/main/resources/data/featuredmaster/forge/biome_modifier/spellden_biome_modifier.json"
+        ]
+      }
+    },
+    {
+      "name": "Spellden1",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spellden_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/featuredmaster/advancements/spellden_1.json"
+        ]
+      }
+    },
+    {
+      "name": "FtmparamModInfo",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ftmparam_mod_info",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/zmicro/featuredmaster/procedures/FtmparamModInfoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ftm",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ftm",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/zmicro/featuredmaster/command/FtmCommand.java"
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "test_debug_log",
+      "type": "arraylist",
+      "scope": "global",
+      "value": "new ArrayList\u003c\u003e()"
+    },
+    {
+      "name": "modi",
+      "type": "map_string",
+      "scope": "global",
+      "value": "new HashMap\u003c\u003e()"
+    },
+    {
+      "name": "ver",
+      "type": "string",
+      "scope": "global",
+      "value": "\"1.0.0\""
+    }
+  ],
+  "sound_elements": [
+    {
+      "name": "chill_calm1",
+      "files": [
+        "chillcalm1"
+      ],
+      "category": "record",
+      "subtitle": ""
+    },
+    {
+      "name": "cavestatic_low",
+      "files": [
+        "static_low"
+      ],
+      "category": "ambient",
+      "subtitle": ""
+    },
+    {
+      "name": "ply_walk1",
+      "files": [
+        "ply_walk1"
+      ],
+      "category": "hostile",
+      "subtitle": ""
+    }
+  ],
+  "language_map": {
+    "en_us": {
+      "item.featuredmaster.cslime_spawn_egg": "Cslime Spawn Egg",
+      "biome.featuredmaster.farrier_land": "Farrier Land",
+      "subtitles.ply_walk1": "",
+      "entity.featuredmaster.cslime": "Cslime",
+      "itemGroup.tabgeneral": "General",
+      "entity.featuredmaster.slime": "Slime",
+      "advancements.spellden_1.descr": "You need to mine spellden",
+      "subtitles.chill_calm1": "",
+      "item.featuredmaster.cilldisc": "Cilldisc",
+      "subtitles.cavestatic_low": "",
+      "advancements.spellden_1.title": "Start of FTM",
+      "config.featuredmaster.main_mod": "featuredmaster",
+      "item.featuredmaster.cilldisc.desc": "ml",
+      "item.featuredmaster.slime_spawn_egg": "Slime Spawn Egg",
+      "block.featuredmaster.spellden": "Spellden"
+    },
+    "ja_jp": {
+      "item.featuredmaster.cslime_spawn_egg": "Cslime Spawn Egg",
+      "biome.featuredmaster.farrier_land": "Farrier Land",
+      "subtitles.ply_walk1": "",
+      "entity.featuredmaster.cslime": "Cslime",
+      "itemGroup.tabgeneral": "General",
+      "entity.featuredmaster.slime": "Slime",
+      "advancements.spellden_1.descr": "You need to mine spellden",
+      "subtitles.chill_calm1": "",
+      "item.featuredmaster.cilldisc": "Cilldisc",
+      "subtitles.cavestatic_low": "",
+      "advancements.spellden_1.title": "Start of FTM",
+      "config.featuredmaster.main_mod": "featuredmaster",
+      "item.featuredmaster.cilldisc.desc": "ml",
+      "item.featuredmaster.slime_spawn_egg": "Slime Spawn Egg",
+      "block.featuredmaster.spellden": "Spellden"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "featuredmaster",
+    "modName": "FeaturedMaster",
+    "version": "1.0.0",
+    "description": "This mod Adds Things",
+    "author": "user, 0micro, MCreator",
+    "websiteURL": "https://0micro.github.io",
+    "license": "Mozilla Public License 2.0",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "modPicture": "logo",
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [
+      "etf",
+      "geckolib",
+      "playeranimator",
+      "reauth"
+    ],
+    "currentGenerator": "forge-1.19.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "io.github.zmicro.featuredmaster",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202300108712
+}

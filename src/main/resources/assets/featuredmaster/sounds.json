@@ -1,0 +1,29 @@
+{
+  "chill_calm1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "featuredmaster:chillcalm1",
+        "stream": true
+      }
+    ]
+  },
+  "cavestatic_low": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "featuredmaster:static_low",
+        "stream": false
+      }
+    ]
+  },
+  "ply_walk1": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "featuredmaster:ply_walk1",
+        "stream": false
+      }
+    ]
+  }
+}

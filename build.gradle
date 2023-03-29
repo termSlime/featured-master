@@ -7,14 +7,38 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
+plugins {
+	id "maven-publish"
+	id "com.matthewprenger.cursegradle" version "1.4.0"
+	id "com.modrinth.minotaur" version "1.2.1"
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.0'
-group = 'com.yourname.modid'
-archivesBaseName = 'modid'
+version = System.getenv("MOD_VER") ?: "0.0.0.0"
+group = 'io.github.zmicro.featuredmaster'
+archivesBaseName = 'ftms-$mc_ver'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDir "src/generated/resources"
+		}
+	}
+}
+
+
 
 minecraft {
     mappings channel: 'official', version: '1.19.2'
@@ -22,41 +46,199 @@ minecraft {
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
+    	def commonRunProperties = {
+    		workingDirectory project.file("run")
+
+    		property "forge.logging.markers", "REGISTRIES"
+    		property "forge.logging.console.level", "debug"
+    		property "fml.earlyprogresswindow", "false"
+
+    		property "mixin.env.remapRefMap", "true"
+    		property "mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg"
+
+    		mods {
+    			featuredmaster {
+    				source sourceSets.main
+    			}
+    		}
+    	}
+    
         client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            with commonRunProperties
         }
 
         server {
-            workingDirectory project.file('run')
+            with commonRunProperties
+        }
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+        data {
+        	with commonRunProperties
+        	forceExit false
+        	args "--mod", "featuredmaster", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources")
         }
     }
+}
+
+processResources {
+	exclude ".cache"
+
+	filesMatching("META-INF/mods.toml") {
+		expand "version": project.version
+	}
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+jar {
+	finalizedBy "reobfJar"
+
+	from sourceSets.main.output.classesDirs
+	from sourceSets.main.output.resourcesDir
+	
+	compileJava { options.encoding = 'UTF-8' }
+	manifest {
+		attributes([
+                "Specification-Title"     : "FeaturedMaster Mod",
+                "Specification-Vendor"    : "termSlime",
+                "Specification-Version"   : "${project.version}",
+                "Implementation-Title"    : "${project.name}",
+                "Implementation-Vendor"   : "termSlime",
+                "Implementation-Version"  : "${project.version}",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+	}
 }
 
+def publicApiIncludePatterns = {
+	include "ftm/api/**"
+}
+
+javadoc {
+	source = sourceSets.main.allJava
+	classpath = sourceSets.main.compileClasspath + sourceSets.main.output
+
+	options.addStringOption("Xdoclint:none", "-quiet")
+	options.encoding = "UTF-8"
+}
+task javadocJar(type: Jar, dependsOn: javadoc, group: "build") {
+	archiveClassifier.set("javadoc")
+	from javadoc.destinationDir
+}
+task sourcesJar(type: Jar) {
+	archiveClassifier.set("sources")
+	from sourceSets.main.allJava
+}
+task apiJar(type: Jar, group: "build") {
+	archiveClassifier.set("api")
+	from sourceSets.main.output
+	from sourceSets.main.allJava
+}
+
+apiJar publicApiIncludePatterns
+
+artifacts {
+	archives javadocJar
+	archives sourcesJar
+	archives apiJar
+}
+/*
+publishing {
+	afterEvaluate {
+		publications {
+			mavenJava(MavenPublication) {
+				groupId = project.group
+				artifactId = project.archivesBaseName
+				version = project.version
+
+				pom.withXml {
+					asNode().remove(asNode().dependencies)
+				}
+
+				from components.java
+				artifact sourcesJar
+				artifact javadocJar
+				artifact apiJar
+			}
+		}
+	}
+
+	repositories {
+		maven {
+			def releasesRepoUrl = uri("$buildDir/repos/releases")
+			def snapshotsRepoUrl = uri("$buildDir/repos/snapshots")
+
+			name = "Project"
+			url = version.toString().endsWith("SNAPSHOT") ? snapshotsRepoUrl
+		}
+
+		maven {
+			credentials {
+				username System.getenv("MODMAVEN_USER")
+				password System.getenv("MODMAVEN_PASSWORD")
+			}
+
+			name = "Modmaven"
+			url = "https://modmaven.dev/artifactory/local-releases/"
+		}
+	}
+}
+if (System.getenv("CURSEFORGE")) {
+	curseforge {
+		apiKey = System.getenv("CURSEFORGE")
+
+		project {
+			id = project.curseforge_project
+			changelogType = "markdown"
+			changelog = "View changelog at [rel page](https://github.com/0micro/featured-master/releases/tag/${version})"
+
+			if (version.contains("alpha")) {
+				releaseType = "alpha"
+			} else if (version.contains("beta")) {
+				releaseType = "beta"
+			} else {
+				releaseType = "release"
+			}
+
+			addGameVersion project.minecraft_version
+			addGameVersion "Forge"
+
+			mainArtifact(jar.archiveFile) {
+				displayName = "${project.version}"
+				
+			}
+		}
+	}
+}
+import com.modrinth.minotaur.TaskModrinthUpload
+import com.modrinth.minotaur.request.VersionType
+
+task publishModrinth(type: TaskModrinthUpload) {
+	onlyIf {
+		System.getenv("MODRINTH")
+	}
+
+	dependsOn jar
+
+	token = System.getenv("MODRINTH")
+	changelog = "View changelog at [the release page](https://github.com/0micro/featured-master/releases/tag/${version})"
+	projectId = project.modrinth_project
+	versionName = project.version
+	versionNumber = project.version
+
+	if (version.contains("alpha")) {
+		versionType = VersionType.ALPHA
+	} else if (version.contains("beta")) {
+		versionType = VersionType.BETA
+	} else {
+		versionType = VersionType.RELEASE
+	}
+
+	uploadFile = jar
+	addGameVersion(project.minecraft_version)
+	addLoader("forge")
+}
 apply from: 'mcreator.gradle'
 
+*/
