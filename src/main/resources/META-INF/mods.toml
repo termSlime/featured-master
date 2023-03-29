@@ -3,6 +3,7 @@ loaderVersion="[43,)"
 license="Mozilla Public License 2.0"
 
 [[mods]]
+issueTrackerURL="https://github.com/termSlime/featured-master/issues"
 modId="featuredmaster"
 version="1.0.0"
 displayName="FeaturedMaster"
